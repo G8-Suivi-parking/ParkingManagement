@@ -17,7 +17,7 @@ public class AbonnementsController : ControllerBase
     }
 
     // GET : api/Abonnements
-    // Liste de tous les abonnements
+  
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Abonnement>>> GetAbonnements()
