@@ -6,9 +6,20 @@ public class Entreprise
 
     public string Nom { get; set; } = string.Empty;
 
-    public string Email { get; set; } = string.Empty;
+    public string NumeroFiscal { get; set; } = string.Empty;
 
-    public string Telephone { get; set; } = string.Empty;
-    public List<Abonnement> Abonnements { get; set; } = new();
+    public string? Contact { get; set; }
 
+    public string? Email { get; set; }
+
+    public string? Adresse { get; set; }
+
+    public bool IsDeleted { get; set; } = false;
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    public DateTime? UpdatedAt { get; set; }
+
+    public ICollection<Abonnement> Abonnements { get; set; }
+        = new List<Abonnement>();
 }
