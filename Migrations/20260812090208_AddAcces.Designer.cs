@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ParkingManagement.API.Data;
@@ -11,9 +12,11 @@ using ParkingManagement.API.Data;
 namespace ParkingManagement.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260812090208_AddAcces")]
+    partial class AddAcces
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,40 +229,6 @@ namespace ParkingManagement.API.Migrations
                         .IsUnique();
 
                     b.ToTable("Parkings");
-                });
-
-            modelBuilder.Entity("ParkingManagement.API.Models.ParkingHistorique", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("CodeParking")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("DateAction")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("NomParking")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("ParkingId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Raison")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ParkingHistoriques");
                 });
 
             modelBuilder.Entity("ParkingManagement.API.Models.Zone", b =>
