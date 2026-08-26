@@ -37,6 +37,13 @@ public class Parking
 
     public DateTime? UpdatedAt { get; set; }
 
+    // Données d'occupation calculées par l'IA
+    public int PlacesOccupees { get; set; } = 0;
+
+    public int PlacesDisponibles { get; set; } = 0;
+
+    public double TauxOccupation { get; set; } = 0;
+
     // Relation avec les zones
     public ICollection<Zone> Zones { get; set; } = new List<Zone>();
 }

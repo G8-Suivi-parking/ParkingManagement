@@ -21,7 +21,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Zone> Zones { get; set; }
 
     public DbSet<Acces> Acces { get; set; }
-    
+
     public DbSet<ParkingHistorique> ParkingHistoriques { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,6 +43,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Parking>()
             .HasIndex(p => p.Code)
             .IsUnique();
+
         modelBuilder.Entity<Acces>()
             .HasOne(a => a.Parking)
             .WithMany()
@@ -50,9 +51,9 @@ public class ApplicationDbContext : DbContext
             .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<Acces>()
-           .HasOne(a => a.Zone)
-           .WithMany()
-           .HasForeignKey(a => a.ZoneId)
-           .OnDelete(DeleteBehavior.Restrict);
+            .HasOne(a => a.Zone)
+            .WithMany()
+            .HasForeignKey(a => a.ZoneId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
